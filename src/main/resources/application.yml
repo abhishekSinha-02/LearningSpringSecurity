@@ -1,0 +1,18 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_ID}
+
+          github:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_ID}
+
+          facebook:
+            client-id:${GOOGLE_CLIENT_ID}
+            client-secret:${GOOGLE_CLIENT_ID}
+
+#if we can go to github developer account and facebook developer account, we can create the developer account and we can generate the OAuth2 Client-Id

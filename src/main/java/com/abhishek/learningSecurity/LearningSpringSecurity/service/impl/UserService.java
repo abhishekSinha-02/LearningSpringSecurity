@@ -1,6 +1,5 @@
 package com.abhishek.learningSecurity.LearningSpringSecurity.service.impl;
 
-import com.abhishek.learningSecurity.LearningSpringSecurity.dto.LoginDto;
 import com.abhishek.learningSecurity.LearningSpringSecurity.dto.SignUpDto;
 import com.abhishek.learningSecurity.LearningSpringSecurity.dto.UserDto;
 import com.abhishek.learningSecurity.LearningSpringSecurity.entities.User;
@@ -36,6 +35,11 @@ public class UserService implements UserDetailsService {
                 orElseThrow(()-> new ResourceNotFoundException("User with id " +userId+" not found"));
     }
 
+    public User getUserByEmail(String email){
+        return userRepository.findByEmail(email)
+                .orElse(null);
+    }
+
     public UserDto signUp(SignUpDto signUpDto) {
 
         Optional<User> user = userRepository.findByEmail(signUpDto.getEmail());
@@ -50,4 +54,7 @@ public class UserService implements UserDetailsService {
         return modelMapper.map(savedUser,UserDto.class);
     }
 
+    public User save(User newUser) {
+        return userRepository.save(newUser);
+    }
 }
